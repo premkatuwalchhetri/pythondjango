@@ -10,7 +10,7 @@ else:
   print("you are not eligible")
   
 age = 21
-  if age>18:
+if age>18:
   print("you can marry")
 else:
   print("you can't marry")  
