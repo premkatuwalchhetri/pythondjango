@@ -34,3 +34,6 @@ print(name.casefold)            #    It is particularly useful for case-insensit
 
 print(name.zfill)          # This is particularly useful when you need to ensure that a string (like a number) has a certain length.
 
+
+
+
