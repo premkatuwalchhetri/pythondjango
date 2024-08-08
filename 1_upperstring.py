@@ -22,15 +22,15 @@ print(name.format)                   # it formats specified values in a string
 print(name.casefold)                       # it converts the string into lowercase
 
 
-print(name.count)                          #
-
-print(name.format)
-
-
-print(name.casefold)
+print(name.count)                          # it  straightforward and counts non-overlapping occurrences of the substring
 
 
 
 
-print(name.zfill)
+print(name.casefold)            #    It is particularly useful for case-insensitive string comparisons, especially when dealing with text in different languages.    
+
+
+
+
+print(name.zfill)          # This is particularly useful when you need to ensure that a string (like a number) has a certain length.
 
