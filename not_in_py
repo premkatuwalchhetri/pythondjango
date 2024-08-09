@@ -1,0 +1,41 @@
+#not
+# in
+
+
+
+#data = "i am veg"
+
+#if "veg" in data:
+ # print("you can eat veg")
+#else: 
+ # print("you are non veg")
+  
+  # email validation     
+  
+
+  #assignment
+  #wap to take user input email and validate it whether it is correct email or not.
+  #WAP to take user input mark percentage and find their division.
+  
+  
+email = "mkc@gmail"
+if "@" in email and ".com" in email:
+  print("email is correct")
+else:
+  print("email is not incorrect") 
+  
+  
+  
+  
+percentage = int(input("enter your percentage"))
+if percentage>=90:
+   print("you are in first division")
+elif percentage>80 and percentage<=89:
+  print("you are in second division")
+elif percentage>60 and percentage<=69:
+  print("you are in third division")
+elif percentage>50 and percentage<=59:
+  print("you are in fourth division")
+else:
+  print("you have low percentage")   
+  
