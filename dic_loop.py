@@ -74,6 +74,7 @@
 
 
 
+# Assignment 22 Aug
 list = ["math", "english","nepali"]
 
 first_list = list[0]
