@@ -1,8 +1,8 @@
 # calculator
- # first_step: ask first number from user
-  #second_step: ask operation from user
-  #hird_step: second number from user_
-  #fourth_step: perform operation based on operator
+#  first_step: ask first number from user
+#   second_step: ask operation from user
+#   hird_step: second number from user_
+#   fourth_step: perform operation based on operator
   
 first_num = int(input("enter a number"))
 operator = input("enter operator (+,-,*,%): ")

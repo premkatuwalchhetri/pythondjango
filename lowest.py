@@ -1,6 +1,6 @@
-data = "5678493"
+data = "56784913"
 
-lowest_number = 0
+lowest_number = 888888888
 
 for number in data:
   number = int(number)
@@ -8,7 +8,6 @@ for number in data:
   if number < lowest_number:
     lowest_number = number
     
-  else:
-    pass
+ 
   
-print(lowest_number)  
+print("lowest number is :", lowest_number)  
