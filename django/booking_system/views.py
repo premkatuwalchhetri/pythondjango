@@ -6,7 +6,7 @@ def index(request):
   return render (request,"index.html")
 
 def contact(request):
-  return HttpResponse("""
-                      <title>CONTACT</title>
-                      <button>9742516921</button>
-                      <a>Feel freee to contact us</a>""")
+  return render(request, "contact.html")
+  
+def booking_section(request):
+  return render(request, 'booking_section.html')

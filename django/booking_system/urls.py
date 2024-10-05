@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('contact/', views.contact),
+    path('booking_section/', views.booking_section),
     
 ]

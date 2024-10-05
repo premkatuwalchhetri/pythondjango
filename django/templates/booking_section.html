@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for responsive and UTF-8 support -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS and Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Page Title -->
+    <title>Afno Hotel - Book a Room</title>
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      .navbar {
+        background-color: #343a40 !important;
+      }
+
+      .navbar-brand, .nav-link {
+        color: #ffffff !important;
+      }
+
+      .room-card {
+        transition: transform 0.3s ease-in-out;
+        margin-top: 20px;
+      }
+
+      .room-card:hover {
+        transform: scale(1.05);
+      }
+
+      .room-title {
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: #007bff;
+      }
+
+      .room-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #28a745;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+      footer {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+      }
+
+      footer a {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Afno Hotel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="booking_section.html">Book a Room</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Book Your Stay at Afno Hotel</h2>
+
+      <div class="row">
+        <!-- Room 1 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Deluxe Room">
+            <div class="card-body">
+              <h5 class="room-title">Deluxe Room</h5>
+              <p class="card-text">A luxurious room with a king-size bed, free Wi-Fi, and a stunning city view.</p>
+              <p class="room-price">$150/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Executive Suite">
+            <div class="card-body">
+              <h5 class="room-title">Executive Suite</h5>
+              <p class="card-text">Spacious suite with a living area, premium amenities, and complimentary breakfast.</p>
+              <p class="room-price">$250/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/210604/pexels-photo-210604.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Standard Room">
+            <div class="card-body">
+              <h5 class="room-title">Standard Room</h5>
+              <p class="card-text">A cozy room with a queen-size bed, ideal for solo travelers or couples.</p>
+              <p class="room-price">$100/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Room 4 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/205342/pexels-photo-205342.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Family Suite">
+            <div class="card-body">
+              <h5 class="room-title">Family Suite</h5>
+              <p class="card-text">Perfect for families with children, this suite includes a living area and extra beds.</p>
+              <p class="room-price">$180/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 5 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Luxury Penthouse">
+            <div class="card-body">
+              <h5 class="room-title">Luxury Penthouse</h5>
+              <p class="card-text">The ultimate in luxury with a private balcony, hot tub, and panoramic views.</p>
+              <p class="room-price">$500/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 6 -->
+        <div class="col-md-4">
+          <div class="card room-card">
+            <img src="https://images.pexels.com/photos/1267310/pexels-photo-1267310.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Budget Room">
+            <div class="card-body">
+              <h5 class="room-title">Budget Room</h5>
+              <p class="card-text">Affordable and comfortable room with all the basic amenities for a quick stay.</p>
+              <p class="room-price">$70/night</p>
+              <a href="#" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Afno Hotel. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
+
