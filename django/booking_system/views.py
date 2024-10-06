@@ -8,5 +8,3 @@ def index(request):
 def contact(request):
   return render(request, "contact.html")
   
-def booking_section(request):
-  return render(request, 'booking_section.html')

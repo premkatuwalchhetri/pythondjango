@@ -1,89 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Meta tags for responsive and UTF-8 support -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS and Google Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Page Title -->
-    <title>Afno Hotel - Contact Us</title>
-
-    <!-- Custom Styles -->
-    <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #f8f9fa;
-      }
-
-      .navbar {
-        background-color: #343a40 !important;
-      }
-
-      .navbar-brand, .nav-link {
-        color: #ffffff !important;
-      }
-
-      .form-control, .btn-primary {
-        border-radius: 0;
-      }
-
-      .contact-section {
-        margin-top: 50px;
-      }
-
-      .contact-info h5 {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-      }
-
-      .contact-info p {
-        font-size: 1rem;
-        color: #6c757d;
-        margin-bottom: 10px;
-      }
-
-      footer {
-        margin-top: 40px;
-        padding: 20px;
-        background-color: #343a40;
-        color: white;
-        text-align: center;
-      }
-
-      footer a {
-        color: #ffffff;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Afno Hotel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="booking_section.html">Book a Room</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="contact.html">Contact</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <p class="text-center">We would love to hear from you! Please fill out the form below, and we’ll get back to you as soon as possible.</p>
 
     <!-- Contact Section -->
     <div class="container contact-section">
@@ -118,7 +38,7 @@
             <p>Afno Hotel, 123 Main Street, Kathmandu, Nepal</p>
 
             <h5>Phone:</h5>
-            <p>+977-1-1234567</p>
+            <p>+977-9742516921</p>
 
             <h5>Email:</h5>
             <p>info@afnohotel.com</p>
@@ -128,20 +48,11 @@
             <p>Saturday - Sunday: 10:00 AM - 4:00 PM</p>
           </div>
 
-          <!-- Map Embed (replace src with the actual location link) -->
           <div class="mt-4">
             <iframe src="https://maps.google.com/maps?q=kathmandu&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
+{% endblock %}
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2024 Afno Hotel. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  </body>
-</html>
