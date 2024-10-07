@@ -9,3 +9,6 @@ def booking_section(request):
     'rooms': rooms
   }
   return render(request, 'booking_section.html',data)
+
+def book(request):
+  return render(request, "book.html")

@@ -1,31 +1,104 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+<style>
+  .room-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .room-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .room-card img {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .room-card .card-body {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .room-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .room-price {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #d9534f;
+    margin-top: 10px;
+  }
+
+  .btn-primary {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #c9302c;
+    border-color: #c12e2a;
+  }
+
+  .container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .my-5 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .mb-4 {
+    margin-bottom: 30px;
+  }
+
+</style>
+
 <div class="container my-5">
   <h2 class="text-center mb-4">Book Your Stay at Afno Hotel</h2>
 
   <div class="row">
     <!-- Room cards -->
     {% for room in rooms %}
-    <div class="col-md-4">
+    <div class="col-md-4 mb-4">
       <div class="card room-card">
-        <!-- Use the dynamic image URL stored in the database -->
+        <!-- Dynamic image URL stored in the database -->
         <img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }} Room">
         <div class="card-body">
-          <!-- Use the dynamic room name -->
+          <!-- Dynamic room name -->
           <h5 class="room-title">{{ room.name }} Room</h5>
-          <!-- Use the dynamic description from the database -->
+          <!-- Dynamic description from the database -->
           <p class="card-text">{{ room.description }}</p>
-          <!-- Use the dynamic price -->
+          <!-- Dynamic price -->
           <p class="room-price">${{ room.price }}/night</p>
-          <a href="#" class="btn btn-primary">Book Now</a>
+          <a href="{% url 'book' %}" class="btn btn-primary">Book Now</a>
         </div>
       </div>
     </div>
     {% endfor %}
-    
   </div>
 </div>
-{% endblock %}
 
+{% endblock %}
 
