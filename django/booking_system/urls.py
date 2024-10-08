@@ -22,12 +22,13 @@ from django.conf.urls.static import static
 
 from . import views 
 import room.urls
+import contact.urls
 
 urlpatterns = [
     path('', views.index, name='index'),  # Ensure the name 'index' is correctly defined
     path('admin/', admin.site.urls),
     path('booking/',include(room.urls)),
-    path('contact/', views.contact, name='contact'),
+    path('contact/',include(contact.urls)),
     
 ]
 if settings.DEBUG:

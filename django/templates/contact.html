@@ -5,37 +5,36 @@
   <h2 class="text-center mb-4">Contact Us</h2>
   <p class="text-center">We would love to hear from you! Please fill out the form below, and we’ll get back to you as soon as possible.</p>
 
-    <!-- Contact Section -->
+
     <div class="container contact-section">
       <div class="row">
-        <!-- Contact Form -->
+
         <div class="col-md-6">
           <h2>Contact Us</h2>
           <p>If you have any inquiries or need more information, feel free to reach out using the form below.</p>
-          <form>
+          <form action="{% url 'store_contact' %}" method="get">
             <div class="mb-3">
-              <label for="name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="4" placeholder="Enter your message here" required></textarea>
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Enter your message here" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        </form>        
         </div>
 
-        <!-- Contact Information -->
         <div class="col-md-6">
           <h2>Our Location</h2>
           <p>You can also reach us via the following details:</p>
           <div class="contact-info">
             <h5>Address:</h5>
-            <p>Afno Hotel, 123 Main Street, Kathmandu, Nepal</p>
+            <p>Afno Hotel, lazimpath Street, Kathmandu, Nepal</p>
 
             <h5>Phone:</h5>
             <p>+977-9742516921</p>
