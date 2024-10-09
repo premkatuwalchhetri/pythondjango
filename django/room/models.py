@@ -12,3 +12,18 @@ class Room(models.Model):
   def __str__(self) -> str:
     return self.name
   
+
+class Booking(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    check_in = models.DateField()
+    check_out = models.DateField()
+    guests = models.IntegerField()
+    room_id = models.IntegerField()
+    
+    def __str__(self) -> str:
+        return self.full_name  # Change this to full_name or another relevant field
+
+    
+

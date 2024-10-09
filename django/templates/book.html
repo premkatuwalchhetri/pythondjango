@@ -11,6 +11,7 @@
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     background-color: #f8f9fa;
+    font-family: 'Open Sans', sans-serif;
   }
 
   /* Styling for form titles */
@@ -20,101 +21,122 @@
     font-weight: 700;
     margin-bottom: 20px;
     text-align: center;
+    color: #333;
   }
 
   /* Input fields styling */
-  .form-control {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease;
-  }
-
-  .form-control:focus {
-    border-color: #d9534f;
-    box-shadow: 0 0 8px rgba(217, 83, 79, 0.2);
-  }
-
-  /* Submit button styling */
-  .btn-primary {
-    background-color: #d9534f;
-    border-color: #d9534f;
-    padding: 10px 20px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-  }
-
-  .btn-primary:hover {
-    background-color: #c9302c;
-    border-color: #c12e2a;
-  }
-
   .form-group {
     margin-bottom: 20px;
   }
 
   .form-label {
+    display: block;
+    margin-bottom: 5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 600;
+    color: #555;
   }
 
-  .text-center {
-    text-align: center;
+  .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-control:focus {
+    border-color: #d9534f;
+    box-shadow: 0 0 10px rgba(217, 83, 79, 0.2);
+    outline: none;
+  }
+
+  /* Submit button styling */
+  .btn-primary {
+    background-color: #d9534f;
+    border: none;
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #c9302c;
+  }
+
+  /* Adding some margin below submit button */
+  .btn-primary:focus {
+    outline: none;
+  }
+
+  /* Responsive design for mobile */
+  @media (max-width: 768px) {
+    .booking-form-container {
+      padding: 20px;
+      margin: 20px auto;
+    }
+
+    .btn-primary {
+      padding: 10px;
+    }
+
+    .form-control {
+      padding: 10px;
+    }
   }
   
+  /* Add subtle focus effect to the submit button */
+  .btn-primary:focus {
+    background-color: #c9302c;
+    box-shadow: 0 0 8px rgba(217, 83, 79, 0.5);
+  }
+
+  /* Styling the input fields for consistent spacing */
+  input[type="text"], input[type="email"], input[type="number"], input[type="date"] {
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+  }
+
 </style>
+
 
 <div class="container booking-form-container">
   <h2 class="text-center">Book Your Stay</h2>
 
-  <form action="#" method="post">
-    {% csrf_token %}
-    <!-- Room Information (passed dynamically if needed) -->
-    <input type="hidden" name="room_id" value="{{ room.id }}">
+  <form action="{% url 'book_stay' %}" method="POST">
+    {% csrf_token %} <!-- Ensure CSRF token is present -->
+    <label for="full_name">Full Name:</label>
+    <input type="text" name="full_name" id="full_name" required><br>
 
-    <!-- Full Name -->
-    <div class="form-group">
-      <label for="fullName" class="form-label">Full Name</label>
-      <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter your full name" required>
-    </div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required><br>
 
-    <!-- Email Address -->
-    <div class="form-group">
-      <label for="email" class="form-label">Email Address</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-    </div>
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" id="phone" required><br>
 
-    <!-- Phone Number -->
-    <div class="form-group">
-      <label for="phone" class="form-label">Phone Number</label>
-      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
-    </div>
+    <label for="check_in">Check-in Date:</label>
+    <input type="date" name="check_in" id="check_in" required><br>
 
-    <!-- Check-in Date -->
-    <div class="form-group">
-      <label for="checkIn" class="form-label">Check-in Date</label>
-      <input type="date" class="form-control" id="checkIn" name="check_in" required>
-    </div>
+    <label for="check_out">Check-out Date:</label>
+    <input type="date" name="check_out" id="check_out" required><br>
 
-    <!-- Check-out Date -->
-    <div class="form-group">
-      <label for="checkOut" class="form-label">Check-out Date</label>
-      <input type="date" class="form-control" id="checkOut" name="check_out" required>
-    </div>
+    <label for="guests">Guests:</label>
+    <input type="number" name="guests" id="guests" required><br>
 
-    <!-- Number of Guests -->
-    <div class="form-group">
-      <label for="guests" class="form-label">Number of Guests</label>
-      <input type="number" class="form-control" id="guests" name="guests" min="1" placeholder="Enter number of guests" required>
-    </div>
+    <label for="room_id">Room ID:</label>
+    <input type="text" name="room_id" id="room_id" required><br>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Submit Booking</button>
-  </form>
-</div>
+    <button type="submit">Submit</button>
+</form>
+
 
 {% endblock %}
