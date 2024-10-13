@@ -19,7 +19,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 from . import views 
 import room.urls
 import contact.urls
@@ -28,10 +27,14 @@ import admin_panel.urls
 urlpatterns = [
     path('', views.index, name='index'),  # Ensure the name 'index' is correctly defined
     path('django_admin/', admin.site.urls),
-    path('booking/',include(room.urls)),
-    path('contact/',include(contact.urls)),
-    path('admin_panel/',include(admin_panel.urls)),
-    
+    path('booking/', include(room.urls)),
+    path('contact/', include(contact.urls)),
+    path('admin_panel/', include(admin_panel.urls)),
+    path('add-room/', views.add_room, name='add_room'), 
+    # Add the following lines for delete functionality
+    path('delete-room/<int:room_id>/', views.delete_room, name='delete_room'),  # Single room delete
+    path('delete-selected-rooms/', views.delete_selected_rooms, name='delete_selected_rooms'),  # Bulk delete
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from room.models import Room
+from room.models import Category  # Import the Room model
 
+def rooms(request):
+    rooms = Room.objects.all()
+    categories = Category.objects.all()  # Fetch all categories
+    context = {
+        'rooms': rooms,
+        'categories': categories
+    }
+    return render(request, 'admin_panel/rooms.html', context)
+
+def delete_room(request, room_id):
+    room = get_object_or_404(Room, id=room_id)  # Get the room or return 404
+    room.delete()  # Delete the room
+    return redirect('rooms')
 # Create your views here.
 
 def index(request):
@@ -17,5 +32,4 @@ def edit_room(request):
 def login(request):
     return render(request, 'admin_panel/login.html')
 
-def rooms(request):
-    return render(request, 'admin_panel/rooms.html')
+
