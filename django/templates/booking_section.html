@@ -83,14 +83,10 @@
     {% for room in rooms %}
     <div class="col-md-4 mb-4">
       <div class="card room-card">
-        <!-- Dynamic image URL stored in the database -->
-        <img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }} Room">
+        <img src="{{ room.image.url }}" class="card-img-top" >
         <div class="card-body">
-          <!-- Dynamic room name -->
           <h5 class="room-title">{{ room.name }} Room</h5>
-          <!-- Dynamic description from the database -->
           <p class="card-text">{{ room.description }}</p>
-          <!-- Dynamic price -->
           <p class="room-price">${{ room.price }}/night</p>
           <a href="{% url 'book' %}" class="btn btn-primary">Book Now</a>
         </div>

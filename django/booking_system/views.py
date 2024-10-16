@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 def index(request):
     return render(request, 'index.html')
 
+
 def add_room(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -15,22 +16,20 @@ def add_room(request):
         available_date = request.POST.get('available_date')
 
         # Handle the uploaded image
-        image = request.FILES['image']
-        fs = FileSystemStorage()
-        filename = fs.save(image.name, image)  # Save the image
-        uploaded_file_url = fs.url(filename)  # Get the URL of the uploaded file
+        image = request.FILES.get('image')  # Get the uploaded image file
 
-        # Create a new Room object
-        room = Room(
-            name=name,
-            description=description,
-            price=price,
-            discount=0,  # Set a default value or get from the form
-            image=uploaded_file_url,
-        )
-        room.save()
+        if image:
+            # Create a new Room object with the uploaded image
+            room = Room(
+                name=name,
+                description=description,
+                price=price,
+                discount=0,  
+                image=image,  # Directly assign the image file to the image field
+            )
+            room.save()
 
-        return redirect('dashboard_rooms')  # Redirect to rooms page after saving
+            return redirect('dashboard_rooms')  # Redirect to rooms dashboard
 
     return render(request, 'admin_panel/add_room.html')
 
@@ -38,11 +37,11 @@ def add_room(request):
 def delete_room(request, room_id):
     room = get_object_or_404(Room, id=room_id)
     room.delete()
-    return redirect('dashboard_rooms')  # Redirect to the rooms page
+    return redirect('dashboard_rooms')  
 
 # New delete view for selected rooms
 def delete_selected_rooms(request):
     if request.method == 'POST':
-        selected_rooms = request.POST.getlist('room_select')  # Get selected room IDs
-        Room.objects.filter(id__in=selected_rooms).delete()  # Bulk delete the selected rooms
-        return redirect('dashboard_rooms')  # Redirect to the rooms page
+        selected_rooms = request.POST.getlist('room_select')  
+        Room.objects.filter(id__in=selected_rooms).delete()  
+        return redirect('dashboard_rooms') 

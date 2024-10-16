@@ -1,223 +1,223 @@
 {% extends 'admin_panel/base_admin.html' %}
 {% load static %}
+
 {% block container %}
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
+        </div>
+    </div>
+    <div class="row tm-content-row">
+        <!-- Room Occupancy Chart -->
+        <div class="col-lg-6 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block">
+                <h2 class="tm-block-title">Room Occupancy</h2>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+        <!-- Revenue Overview Chart -->
+        <div class="col-lg-6 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block">
+                <h2 class="tm-block-title">Revenue Overview</h2>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+        <!-- Room Types Distribution -->
+        <div class="col-lg-6 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-taller">
+                <h2 class="tm-block-title">Room Types Distribution</h2>
+                <div id="pieChartContainer">
+                    <canvas id="pieChart" width="200" height="200"></canvas>
                 </div>
             </div>
-            <div class="row tm-content-row">
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Room Occupancy</h2>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Revenue Overview</h2>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
-                        <h2 class="tm-block-title">Room Types Distribution</h2>
-                        <div id="pieChartContainer">
-                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-                        </div>                        
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Recent Bookings</h2>
-                        <div class="tm-notification-items">
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>John</b> booked <a href="#"
-                                            class="tm-notification-link">Room 101</a> for 2 nights.</p>
-                                    <span class="tm-small tm-text-color-secondary">3h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Emma</b> reserved <a href="#"
-                                            class="tm-notification-link">Room 202</a> for a week.</p>
-                                    <span class="tm-small tm-text-color-secondary">5h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Liam</b> booked <a href="#"
-                                            class="tm-notification-link">Room 303</a> for 4 nights.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
+        </div>
+        <!-- Recent Bookings -->
+        <div class="col-lg-6 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
+                <h2 class="tm-block-title">Recent Bookings</h2>
+                <div class="tm-notification-items">
+                    <!-- Booking Item 1 -->
+                    <div class="media tm-notification-item">
+                        <div class="tm-gray-circle">
+                            <img src="{% static 'admin_panel/img/notification-01.jpg' %}" alt="Avatar Image" class="rounded-circle">
+                        </div>
+                        <div class="media-body">
+                            <p class="mb-2"><b>Anjan</b> booked <a href="#" class="tm-notification-link">Room 101</a> for 2 nights.</p>
+                            <span class="tm-small tm-text-color-secondary">3h ago</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                        <h2 class="tm-block-title">Room List</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ROOM NO.</th>
-                                    <th scope="col">STATUS</th>
-                                    <th scope="col">TYPE</th>
-                                    <th scope="col">PRICE</th>
-                                    <th scope="col">LAST BOOKING</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><b>#101</b></th>
-                                    <td>
-                                        <div class="tm-status-circle occupied">
-                                        </div>Occupied
-                                    </td>
-                                    <td><b>Single</b></td>
-                                    <td><b>$120/night</b></td>
-                                    <td>12 OCT 2024</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#202</b></th>
-                                    <td>
-                                        <div class="tm-status-circle available">
-                                        </div>Available
-                                    </td>
-                                    <td><b>Double</b></td>
-                                    <td><b>$180/night</b></td>
-                                    <td>10 OCT 2024</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#303</b></th>
-                                    <td>
-                                        <div class="tm-status-circle occupied">
-                                        </div>Occupied
-                                    </td>
-                                    <td><b>Suite</b></td>
-                                    <td><b>$300/night</b></td>
-                                    <td>8 OCT 2024</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Booking Item 2 -->
+                    <div class="media tm-notification-item">
+                        <div class="tm-gray-circle">
+                            <img src="{% static 'admin_panel/img/notification-02.jpg' %}" alt="Avatar Image" class="rounded-circle">
+                        </div>
+                        <div class="media-body">
+                            <p class="mb-2"><b>Apshan</b> reserved <a href="#" class="tm-notification-link">Room 202</a> for a week.</p>
+                            <span class="tm-small tm-text-color-secondary">5h ago</span>
+                        </div>
+                    </div>
+                    <!-- Booking Item 3 -->
+                    <div class="media tm-notification-item">
+                        <div class="tm-gray-circle">
+                            <img src="{% static 'admin_panel/img/notification-03.jpg' %}" alt="Avatar Image" class="rounded-circle">
+                        </div>
+                        <div class="media-body">
+                            <p class="mb-2"><b>Ram</b> booked <a href="#" class="tm-notification-link">Room 303</a> for 4 nights.</p>
+                            <span class="tm-small tm-text-color-secondary">6h ago</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% endblock %}
-
-{% block script %} 
-
-    <script src="{% static 'admin_panel/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'admin_panel/js/moment.min.js' %}"></script>
-    <script src="{% static 'admin_panel/js/Chart.min.js' %}"></script>
-    <script src="{% static 'admin_panel/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'admin_panel/js/tooplate-scripts.js' %}"></script>
-
-
-
-    <!-- Chart configurations -->
-    <script>
-        Chart.defaults.global.defaultFontColor = 'white';
-        
-        let ctxLine = document.getElementById('lineChart').getContext('2d');
-        let ctxBar = document.getElementById('barChart').getContext('2d');
-        let ctxPie = document.getElementById('pieChart').getContext('2d');
-
-        // Line chart configuration
-        let lineChart = new Chart(ctxLine, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                datasets: [{
-                    label: 'Occupancy',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                responsive: true
-            }
-        });
-
-        // Bar chart configuration
-        let barChart = new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                datasets: [{
-                    label: 'Revenue',
-                    data: [1500, 2300, 800, 1600, 2100, 1900],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                responsive: true
-            }
-        });
-
-        // Pie chart configuration
-        let pieChart = new Chart(ctxPie, {
-            type: 'pie',
-            data: {
-                labels: ['Single Room', 'Double Room', 'Suite'],
-                datasets: [{
-                    label: 'Room Types',
-                    data: [45, 35, 20],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    </script>
-</body>
+        <!-- Room List -->
+        <div class="col-12 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                <h2 class="tm-block-title">Room List</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ROOM NO.</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">TYPE</th>
+                            <th scope="col">PRICE</th>
+                            <th scope="col">LAST BOOKING</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><b>#101</b></th>
+                            <td><div class="tm-status-circle occupied"></div>Occupied</td>
+                            <td><b>Single</b></td>
+                            <td><b>$120/night</b></td>
+                            <td>12 OCT 2024</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><b>#202</b></th>
+                            <td><div class="tm-status-circle available"></div>Available</td>
+                            <td><b>Double</b></td>
+                            <td><b>$180/night</b></td>
+                            <td>10 OCT 2024</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><b>#303</b></th>
+                            <td><div class="tm-status-circle occupied"></div>Occupied</td>
+                            <td><b>Suite</b></td>
+                            <td><b>$300/night</b></td>
+                            <td>8 OCT 2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+{% block script %}
+<script src="{% static 'admin_panel/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'admin_panel/js/moment.min.js' %}"></script>
+<script src="{% static 'admin_panel/js/Chart.min.js' %}"></script>
+<script src="{% static 'admin_panel/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin_panel/js/tooplate-scripts.js' %}"></script>
+
+<!-- Chart configurations -->
+<script>
+    Chart.defaults.global.defaultFontColor = 'white';
+
+    let ctxLine = document.getElementById('lineChart').getContext('2d');
+    let ctxBar = document.getElementById('barChart').getContext('2d');
+    let ctxPie = document.getElementById('pieChart').getContext('2d');
+
+    // Line chart configuration
+    let lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Occupancy',
+                data: [12, 19, 3, 5, 2, 3],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            responsive: true
+        }
+    });
+
+    // Bar chart configuration
+    let barChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Revenue',
+                data: [1500, 2300, 800, 1600, 2100, 1900],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            responsive: true
+        }
+    });
+
+    // Pie chart configuration
+    let pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Single Room', 'Double Room', 'Suite'],
+            datasets: [{
+                label: 'Room Types',
+                data: [45, 35, 20],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+{% endblock %}
+

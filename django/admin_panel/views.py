@@ -12,10 +12,10 @@ def rooms(request):
     return render(request, 'admin_panel/rooms.html', context)
 
 def delete_room(request, room_id):
-    room = get_object_or_404(Room, id=room_id)  # Get the room or return 404
-    room.delete()  # Delete the room
+    room = get_object_or_404(Room, id=room_id)  
+    room.delete()  
     return redirect('rooms')
-# Create your views here.
+
 
 def index(request):
     return render(request, 'admin_panel/index.html')
