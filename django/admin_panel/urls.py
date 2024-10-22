@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import add_category
 
 urlpatterns = [
     path('', views.index, name='dashboard_index'),  # Home page
@@ -9,5 +10,7 @@ urlpatterns = [
     path('login/', views.login, name='dashboard_login'),  # Corrected to point to login view
     path('rooms/', views.rooms, name='dashboard_rooms'),  # Rooms page
     path('delete_room/<int:room_id>/', views.delete_room, name='delete_room'),
+    path('add_category/', views.add_category, name='add_category'),
+    path('delete_category/<int:cat_id>/', views.delete_category, name='delete_category'),
 ]   
 

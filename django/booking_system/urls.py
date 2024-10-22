@@ -31,9 +31,11 @@ urlpatterns = [
     path('contact/', include(contact.urls)),
     path('admin_panel/', include(admin_panel.urls)),
     path('add-room/', views.add_room, name='add_room'), 
-    # Add the following lines for delete functionality
-    path('delete-room/<int:room_id>/', views.delete_room, name='delete_room'),  # Single room delete
-    path('delete-selected-rooms/', views.delete_selected_rooms, name='delete_selected_rooms'),  # Bulk delete
+    path('delete-room/<int:room_id>/', views.delete_room, name='delete_room'),  
+    path('delete-selected-rooms/', views.delete_selected_rooms, name='delete_selected_rooms'),  
+    path('admin_panel/', include(('admin_panel.urls', 'admin_panel'), namespace='admin_panel')),
+    path('delete-category/<int:cat_id>/', views.delete_category, name='delete_category'),  
+    path('delete-selected-categories/', views.delete_selected_categories, name='delete_selected_categories'), 
 ]
 
 if settings.DEBUG:

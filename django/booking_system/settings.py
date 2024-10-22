@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'room',
     'contact',
     'admin_panel',
+    'category',
 ]
 
 MIDDLEWARE = [
