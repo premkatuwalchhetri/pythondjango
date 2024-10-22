@@ -64,8 +64,8 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="{% url 'dashboard_login' %}">
-                                Admin, <b>Logout</b>
+                            <a class="nav-link d-block" href="{% url 'admin_login' %}">
+                                {{request.user.username}} , <b>Logout</b>
                             </a>
                         </li>
                     </ul>

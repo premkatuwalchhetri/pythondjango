@@ -29,4 +29,3 @@ def book_stay(request):
 
 
 
-

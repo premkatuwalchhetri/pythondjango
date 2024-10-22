@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from room.models import Room
+from django.http import HttpResponse
 from category.models import Category   # Import the Room model
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/admin/login/')
 def rooms(request):
     rooms = Room.objects.all()
     categories = Category.objects.all()  # Fetch all categories
@@ -49,8 +54,25 @@ def add_room(request):
 def edit_room(request):
     return render(request, 'admin_panel/edit_room.html')
 
-def login(request):
-    return render(request, 'admin_panel/login.html')
+def admin_login(request):
+    if request.method == "POST":
+        #here will be login process
+        print("\n\n","method_name is:", request.method,request.POST,"  ***************\n\n")
+        username = request.POST['username']
+        password = request.POST['password']
+   
+        print(username,password)
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request,user)
+            print(" user data get success ")
+            return HttpResponse(f"you are going  to login with {username} and {password}")
+        else:
+            print("invalid password and username")
+            return HttpResponse(f"invalid password and username")
+        
+    else:
+        return render(request,"admin_panel/login.html")
 
 
 

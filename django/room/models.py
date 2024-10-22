@@ -32,6 +32,3 @@ class Booking(models.Model):
     
     def __str__(self) -> str:
         return self.full_name  # Change this to full_name or another relevant field
-
-    
-
