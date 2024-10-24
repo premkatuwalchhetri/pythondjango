@@ -41,10 +41,12 @@ def delete_category(request, cat_id):
     return redirect('add_category')
 
 
-
+@login_required(login_url='/admin/login/')
 def index(request):
     return render(request, 'admin_panel/index.html')
 
+
+@login_required(login_url='/admin/login/')
 def accounts(request):
     return render(request, 'admin_panel/accounts.html')
 
